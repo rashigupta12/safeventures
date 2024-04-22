@@ -1,0 +1,103 @@
+.fa-sm {
+    font-size: 80%;
+}
+.autosave-indicator {
+    position: absolute;
+    top: 1px;
+    right: 10px;
+    padding: 8px;
+    color: royalblue;
+    z-index: 100;
+}
+
+.input-group .autosave-indicator {
+    right: 1px;
+}
+
+.autosave-progress {
+    color: darkred;
+}
+
+.autosave-done {
+    color: green;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #2196f3;
+    background-color: #2196f3;
+}
+.custom-switch .custom-control-input:checked ~ .custom-control-label::before, .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+    background-color: #2196f3;
+}
+.custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+    background-color: #fff;
+}
+.table.table-condensed td, .table.table-condensed th {
+    padding: 0.35rem 0.55rem;
+}
+.datatable-footer, .datatable-header {
+    padding: 0.65rem 1.25rem 0 1.25rem;
+}
+.dataTable thead .sorting:after, .dataTable thead .sorting:before, .dataTable thead .sorting_asc:after, .dataTable thead .sorting_asc_disabled:after, .dataTable thead .sorting_desc:after, .dataTable thead .sorting_desc_disabled:after {
+    right: 0.35rem;
+}
+.dataTables_filter, .dataTables_length {
+    margin: 0 0 0.75rem 0.75rem;
+}
+.page-title {
+    padding: 1.2rem 0;
+}
+.fileinput .thumbnail[data-trigger="fileinput"] {
+    cursor: pointer;
+}
+.fileinput .thumbnail {
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+}
+.thumbnail {
+    display: block;
+    padding: 4px;
+    margin-bottom: 20px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: border .2s ease-in-out;
+    -o-transition: border .2s ease-in-out;
+    transition: border .2s ease-in-out;
+}
+.fileinput .thumbnail > img {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+.fileinput-exists .fileinput-new, .fileinput-new .fileinput-exists {
+    display: none;
+}  
+.fileinput-exists .placeholder, .fileinput-new .fileinput-preview {
+    display: none;
+}  
+img.profile_photo_preview {
+    width: 100px;
+    height: 100px;
+}
+.navbar-brand img {
+    height: 2rem;
+}
+.overlay-container {position:relative}
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+.opacity-1 {opacity:0.1}
+.opacity-2 {opacity: 0.2}
+.opacity-3 {opacity: 0.3}
+.opacity-4 {opacity: 0.4}
+.opacity-5 {opacity: 0.5}

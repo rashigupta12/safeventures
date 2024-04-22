@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="/favicon.png" />
+  <title>safeventures</title>
+  <link rel="stylesheet" href="assets/css/plugins.css">
+  <link rel="stylesheet" href="assets/fonts/icomoon/style.min.css">
+  <link rel="stylesheet" href="assets/fonts/fontawesome/style.min.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=1.0.13">
+  <link rel="stylesheet" href="assets/css/components.min.css">
+  <link rel="stylesheet" href="assets/css/colors/darkgreen.css">
+  <style>
+    #googleMap {
+      height: 700px;
+      width: 100%;
+    }
+
+    #coordinates {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper" style="background:#edeeea">
+    <header class="header bg-light use-sticky " style="background:#edeeea">
+
+      <nav class="navbar navbar-expand-lg classic transparent navbar-light" style="background:#edeeea">
+        <div class="container flex-lg-row flex-nowrap align-items-center">
+          <div class="navbar-brand brand-logo">
+            <a href="/">
+              <img src="assets/pictures/logo1.png" height="100px" alt="Farmbers" />
+            </a>
+          </div>
+          <div class="navbar-collapse offcanvas-nav justify-content-end">
+            <div class="offcanvas-header d-lg-none d-xl-none">
+              <a href="/">
+                <img src="assets/pictures/logo1.png" alt="Farmbers" />
+              </a>
+              <button type="button" class="btn-close btn-close-white offcanvas-close offcanvas-nav-close"
+                aria-label="Close"></button>
+            </div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">Home</a>
+              </li>
+              <ul class="dropdown-menu">
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle">About</a>
+                  <
+
+                <li class="nav-item">
+                  <a class="dropdown-item" href="#">Vision</a>
+                </li>
+                <li class="nav-item">
+                  <a class="dropdown-item" href="mission.html">Mission</a>
+                </li>
+              </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Guide to Safety</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/news">Emergency Nearby</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/web-stories">Family Details</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="ajaxModal"
+                  href="https://farmers.smartstalk.com/dataservice/cropstages">Our Experts</a>
+              </li>
+            </ul>
+            <!-- /.navbar-nav -->
+          </div>
+          <!-- /.navbar-collapse -->
+          <div class="navbar-other ms-lg-4">
+            <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
+              <li class="nav-item">
+                <div class="nav justify-content-end text-end">
+                  <a href="#" class="nav-search">
+                    <i class="uil uil-search"></i>
+                  </a>
+                </div>
+              </li>
+              <li class="nav-item d-lg-none">
+                <div class="navbar-hamburger">
+                  <button class="hamburger animate plain" data-toggle="offcanvas-nav">
+                    <span></span>
+                  </button>
+                </div>
+              </li>
+            </ul>
+
+
+            <!-- /.navbar-nav -->
+          </div>
+        </div>
+
+
+        <div class="credential">
+          <!--<span class="mx-1">Rashi gupta</span>-->
+          <!--<a href="/logout" class="fas fa-sign-out text-white px-1"><span class="mx-1">Sign Out</span></a>-->
+
+          <div class=" dropdown user-profile">
+            <a class=" btn  px-3 py-1" href="#" role="button" id="profileDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="assets/images/logo2.png" alt="" />
+              Rashi gupta </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+              <li>
+                <a class="dropdown-item" href="#">Edit Profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Settings</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider" />
+              </li>
+              <li>
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- /.navbar-other -->
+
+
+        <!-- /.container -->
+      </nav>
+      <div class="container nav-search-mobile bg-light d-none">
+
+      </div>
+      <div class="nav-search-form d-none">
+        <div class="row align-items-center py-3">
+          <div class="col-10">
+            <div class="search">
+              <i class="fa fa-search"></i>
+              <input type="text" class="form-control" autocomplete="off" placeholder="Search Farmbers" name="q">
+            </div>
+          </div>
+          <div class="col-2">
+            <a href="#" class="nav-search-close"><i class="fa fa-times"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- /.navbar -->
+    </header>
+
+    <div class="container-fluid p-0 w-100">
+    </div>
+
+    <div class="container-fluid mt-3 mb-1">
+      <div id="googleMap"></div>
+      <div id="coordinates"></div>
+
+      <script>
+        function initMap() {
+          var ulat = 28.6139;
+          var ulng = 77.209;
+
+          var map = new google.maps.Map(document.getElementById("googleMap"), {
+            center: { lat: ulat, lng: ulng },
+            zoom: 11,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+          });
+
+          // Circle 1: Ghaziabad
+          new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.4,
+            map: map,
+            center: { lat: 28.6692, lng: 77.4538 },
+            radius: 2000, // 2 km radius
+          });
+
+          // Circle 2: Noida
+          new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.4,
+            map: map,
+            center: { lat: 28.5355, lng: 77.391 },
+            radius: 4500, // 4.5 km radius
+          });
+
+          var marker = new google.maps.Marker({
+            position: { lat: ulat, lng: ulng },
+            map: map,
+            icon: {
+              url: "https://e7.pngegg.com/pngimages/439/19/png-clipart-avatar-user-profile-icon-women-wear-frock-face-holidays.png",
+              scaledSize: new google.maps.Size(40, 40),
+            },
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+          });
+
+          // Function to update coordinates when marker is dragged
+          /*function updateCoordinates(event) {
+            var latLng = event.latLng;
+            document.getElementById("coordinates").innerHTML =
+              "Latitude: " + latLng.lat().toFixed(6) + "<br>Longitude: " + latLng.lng().toFixed(6);
+          }*/
+        }
+      </script>
+
+      <!-- Load the Google Maps JavaScript API with your API key -->
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCOMJanUWPuOAp067zCfs2_lR4Wxw6uPeQ&callback=initMap"
+        async defer></script>
+    </div>
+
+    <footer>
+      <div class="container py-5 py-md-5">
+        <div class="row gy-6 gy-lg-0">
+          <div class="col-lg-5">
+            <div class="widget">
+              <h3 class="h2 mb-3 ">Join the safeventures </h3>
+              <p class="lead mb-5">One plateform for women</p>
+              <nav class="nav social  text-md-end">
+                <a href="#" target="_blank"><i class="uil uil-twitter"></i></a>
+                <a href="#" target="_blank"><i class="uil uil-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="uil uil-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="uil uil-instagram"></i></a>
+                <a href="#" target="_blank"><i class="uil uil-pinterest"></i></a>
+                <a href="#" target="_blank"><i class="uil uil-youtube"></i></a>
+              </nav>
+
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /column -->
+          <div class="col-md-4 col-lg-2 offset-lg-1">
+            <div class="widget">
+              <h4 class="widget-title  mb-3">Quick Links</h4>
+              <ul class="list-unstyled text-reset mb-0">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guidetosafety.html">Guide To Safety</a></li>
+                <li><a href="emergencynearby.html">Emergency Nearby</a></li>
+              </ul>
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /column -->
+          <div class="col-md-4 col-lg-2">
+            <div class="widget">
+              <h4 class="widget-title  mb-3">Learn More</h4>
+              <ul class="list-unstyled text-reset mb-0">
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="vision.html"> vision </a></li>
+                <li><a href="familydetails.html">Family Details</a></li>
+              </ul>
+            </div>
+
+            <!-- /.widget -->
+          </div>
+          <!-- /column -->
+          <div class="col-md-4 col-lg-2">
+            <div class="widget">
+              <h4 class="widget-title  mb-3">Get in Touch</h4>
+              <a href="https://www.google.com/maps/place/Pandav+Rd,+Jawala+Nagar,+Shahdara,+Delhi/@28.6694298,77.2974461,17z/data=!3m1!4b1!4m5!3m4!1s0x390cfb7b6a784c35:0x11e9e3c501b68aa6!8m2!3d28.6694298!4d77.2996348"
+                target="_blank">
+                <address>7/306 Pandav Road, Jawala Nagar, New Delhi, Delhi 110032</address>
+              </a>
+
+            </div>
+            <!-- /.widget -->
+          </div>
+          <!-- /column -->
+        </div>
+        <!--/.row -->
+        <hr class="mt-1 mt-md-1 mb-3">
+        <div class="d-md-flex align-items-center justify-content-between">
+          <p class="mb-2 mb-lg-0">&copy;
+            <script style="color:azure">document.write(new Date().getFullYear());</script> All rights
+            reserved.
+          </p>
+          <!-- /.social -->
+        </div>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/5febfc9d-6046-42e0-9eb6-32fa71215bf8/webchat/config.js"
+      defer></script>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/plugins/slick/slick.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=myMap"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/select2.min.js"></script>
+    <script src="assets/plugins/bootstrap_multiselect.min.js"></script>
+    <script src="assets/plugins/validate.min.js"></script>
+    <script src="assets/plugins/fileinput.js"></script>
+    <script src="assets/plugins/sweet_alert.min.js"></script>
+    <script src="assets/plugins/sticky.min.js"></script>
+    <script src="assets/js/app.js?v=1.0.13"></script>
+    <script src="assets/js/jquery-migrate.min.js"></script>
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <!-- Botpress Webchat -->
+    <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
+    <script src="https://mediafiles.botpress.cloud/5febfc9d-6046-42e0-9eb6-32fa71215bf8/webchat/config.js"
+      defer></script>
+
+    <!-- Additional custom scripts -->
+    <script>
+      // Your custom JavaScript functions here
+    </script>
+</body>
+
+</html>
